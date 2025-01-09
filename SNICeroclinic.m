@@ -1,4 +1,4 @@
-% Non-central SNICeroclinic in plynomial model
+% Non-central SNICeroclinic in polynomial model
 % 10/2024
 function xdot=SNICeroclinic(~,var,p)
 % Initialise the system
