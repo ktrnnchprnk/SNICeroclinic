@@ -1,0 +1,10 @@
+r1 = run('sys')
+r1_LC = run(r1('HB1'), IPS=2, ICP=['c','PERIOD'],NMX=50000, NPR=10000,NTST=220,DSMAX= 1e-3, SP=['LP0', 'BP0'],UZSTOP={'PERIOD':1e+4})
+HC2=run(r1_LC('UZ1'),IPS=2,ICP=['c','b'],NMX=500,NPR=25,DSMAX=1e-2,UZSTOP={'b':[-10,0.359]},SP=['LP0', 'BP0'])
+LC = run(HC2('UZ1'), IPS=2, ISW=1, ICP=['c', 'PERIOD', 'MIN'],NMX=3000,NPR=1000,UZSTOP={'c':[-10,10],'PERIOD':1e+4}, SP=['LP0'])
+
+r2 = run('sys', PAR= {'b':0.35}, U={1:-6.14045,2:-2.365542},UZSTOP={'c':[-4,4]})
+r2_end = run('sys', PAR= {'b':0.35}, U={1:-6.14045,2:-2.365542},UZSTOP={'c':[-4,4]},DS='-')
+
+r2_LC1 = run(r2('HB1'), IPS=2, ICP=['c','PERIOD','MIN'],NMX=5000, NPR=1000,NTST=100,DSMAX= 1e-3, SP=['LP0', 'BP0'],UZSTOP={'PERIOD':1e+3})
+r2_LC3 = run(r2('HB2'), IPS=2, ICP=['c','PERIOD','MIN'],NMX=5000, NPR=1000,NTST=220,DSMAX= 1e-3, SP=['LP0', 'BP0'],UZSTOP={'PERIOD':1e+4})
